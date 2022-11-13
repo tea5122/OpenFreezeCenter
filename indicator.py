@@ -36,7 +36,7 @@ if check_1 == False:
         conf_file.write("%i," % val)
     conf_file.write("\n0")
     conf_file.close()
-    os.system("xterm -e 'bash -c \"sudo nohup python3 ${pkgdir}read_temp_set.py >/dev/null 2>&1\"'")
+    os.system("xterm -e 'bash -c \"sudo nohup python3 ${pkgdir}read_temp_set.py\"'")
     
 import gi.repository
 
@@ -83,10 +83,6 @@ def build_menu():
     battery_charge_threshold_submenu = gtk.Menu()
     flip_board_submenu = gtk.Menu()
     backlight_submenu = gtk.Menu()
-
-    item_github = gtk.MenuItem.new_with_label('Visit Project')
-    item_github.connect('activate', github)
-    menu.append(item_github)
 
     Separator = gtk.SeparatorMenuItem()                                     ################################## Fan Mode
     menu.append(Separator)
@@ -143,27 +139,6 @@ def build_menu():
     item_monitor.connect('activate', monitoring)
     menu.append(item_monitor)
     
-    item_cpu = gtk.MenuItem.new_with_label('CPU Profiles')                   ################# CPU profiles
-    item_cpu.set_submenu(cpu_submenu)
-    
-    cpu_powersaver = gtk.MenuItem.new_with_label('PowerSaver')
-    cpu_powersaver.connect('activate', powersaver)
-    cpu_submenu.append(cpu_powersaver)
-    
-    cpu_balanced = gtk.MenuItem.new_with_label('Balanced')
-    cpu_balanced.connect('activate', balanced)
-    cpu_submenu.append(cpu_balanced)
-    
-    cpu_performance = gtk.MenuItem.new_with_label('Performance')
-    cpu_performance.connect('activate', performance)
-    cpu_submenu.append(cpu_performance)
-    
-    cpu_manual = gtk.MenuItem.new_with_label('Manual')
-    cpu_manual.connect('activate', manual)
-    cpu_submenu.append(cpu_manual)
-    
-    menu.append(item_cpu)
-
     item_battery_charge_threashold = gtk.MenuItem.new_with_label('Battery Charge Threashold')          ################# Battery Profiles
     item_battery_charge_threashold.set_submenu(battery_charge_threshold_submenu)
     
@@ -200,19 +175,6 @@ def build_menu():
     item_ec.connect('activate', ec_map)
     menu.append(item_ec)
 
-    item_flip_board = gtk.MenuItem.new_with_label('Intel 11th Gen')                       ################# CPU fan monitor choose "ca" and "c8"
-    item_flip_board.set_submenu(flip_board_submenu)
-    
-    item_flip_board_1 = gtk.MenuItem.new_with_label('On')
-    item_flip_board_1.connect('activate', flip_board_1)
-    flip_board_submenu.append(item_flip_board_1)
-
-    item_flip_board_2 = gtk.MenuItem.new_with_label('Off')
-    item_flip_board_2.connect('activate', flip_board_2)
-    flip_board_submenu.append(item_flip_board_2)
-
-    menu.append(item_flip_board)
-
     Separator = gtk.SeparatorMenuItem()                                      ################################# Quit
     menu.append(Separator)
 
@@ -222,9 +184,6 @@ def build_menu():
 
     menu.show_all()
     return menu
-
-def github(source):
-    webbrowser.open("https://github.com/YoCodingMonster/MSI-Dragon-Center-for-Linux")
 
 def auto(source):
     all_lines = reading()
@@ -276,23 +235,8 @@ def cooler_booster(source):
     corrections(lines)
 
 def monitoring(source):
-    os.system("xterm -e 'bash -c \"sudo nohup python3 ${pkgdir}monitor.py >/dev/null 2>&1\"'")
-    
-def powersaver(source):
-    f = 0
-
-def balanced(source):
-    f = 0
-
-def performance(source):
-    f = 0
-    
-def manual(source):
-    f = 0
-    
-def cpu(source):
-    f = 0
-    
+    os.system("xterm -e 'bash -c \"sudo nohup python3 ${pkgdir}monitor.py\"'")
+        
 def battery_charge_threashold_50(source):
     all_lines = reading()
     lines = all_lines[0] + "\n" + all_lines[1] + "\n" + all_lines[2] + "\n" + "50" + "\n" + all_lines[4] + "\n" + all_lines[5] + "\n" + all_lines[6]
@@ -324,18 +268,8 @@ def battery_charge_threashold_100(source):
     corrections(lines)
     
 def ec_map(source):
-    os.system("xterm -e 'bash -c \"sudo nohup python3 ${pkgdir}ec_dump.py >/dev/null 2>&1\"'")
+    os.system("xterm -e 'bash -c \"sudo nohup python3 ${pkgdir}ec_dump.py\"'")
     
-def flip_board_1(source):
-    all_lines = reading()
-    lines = all_lines[0] + "\n" + all_lines[1] + "\n" + all_lines[2] + "\n" + all_lines[3] + "\n" + all_lines[4] + "\n" + all_lines[5] + "\n" + str(1)
-    corrections(lines)
-    
-def flip_board_2(source):
-    all_lines = reading()
-    lines = all_lines[0] + "\n" + all_lines[1] + "\n" + all_lines[2] + "\n" + all_lines[3] + "\n" + all_lines[4] + "\n" + all_lines[5] + "\n" + str(0)
-    corrections(lines)
-
 def quit(source):
     gtk.main_quit()
 
