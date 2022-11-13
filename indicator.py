@@ -1,10 +1,10 @@
 #! /usr/bin/python3
 
-import signal
+import fileinput
 import os
+import signal
 import subprocess
 import webbrowser
-import fileinput
 
 #################################################################################################### Indicator Making
 
@@ -39,10 +39,12 @@ if check_1 == False:
     os.system("xterm -e 'bash -c \"sudo nohup python3 ${pkgdir}read_temp_set.py >/dev/null 2>&1\"'")
     
 import gi.repository
+
 gi.require_version('Gtk', '3.0')
 gi.require_version('AppIndicator3', '0.1')
-from gi.repository  import Gtk as gtk
 from gi.repository import AppIndicator3 as appindicator
+from gi.repository import Gtk as gtk
+
 
 def reading():
     conf_file = open(my_filename, "r")

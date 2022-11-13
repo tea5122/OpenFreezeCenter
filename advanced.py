@@ -1,9 +1,9 @@
 #! /usr/bin/python3
 
-from tkinter import *
-import os
 import fileinput
+import os
 from math import pow
+from tkinter import *
 
 path_to_script = os.path.dirname(os.path.abspath(__file__))
 my_filename = os.path.join(path_to_script, "conf.txt")

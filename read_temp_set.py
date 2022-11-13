@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 
-import os
 import fileinput
+import os
 
 EC_IO_FILE = '/sys/kernel/debug/ec/ec0/io'
 path_to_script = os.path.dirname(os.path.abspath(__file__))

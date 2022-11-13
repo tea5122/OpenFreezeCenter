@@ -1,5 +1,4 @@
 #! /usr/bin/python3
-
 import os
 
 EC_IO_FILE = '/sys/kernel/debug/ec/ec0/io'

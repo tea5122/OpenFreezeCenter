@@ -1,8 +1,8 @@
 #! /usr/bin/python3
 
-from tkinter import *
-import threading
 import math
+import threading
+from tkinter import *
 
 EC_IO_FILE = '/sys/kernel/debug/ec/ec0/io'
 
