@@ -11,8 +11,7 @@
 6. ```conf.txt``` will be created in the same folder, it will contain all your configurations and fan curve values. Deleting that file will reset all your fan curves.
 
 # Models Supported.
-- MSI GS66 (10th Gen Intel)
+- MSI GS66
 - MSI GE66
 - MSI GS65
 - MSI GF63
-- MSI GP76 (11th Gen Intel)
