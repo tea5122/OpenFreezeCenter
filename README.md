@@ -8,7 +8,7 @@
 3. ``` chmod +x at_startup.sh install_deps.sh root_permissions.sh```
 4. ``` ./install_deps.sh ```
 5. ``` sudo ./at_startup.sh ```
-6. ```conf.txt``` will be created in the same folder. it will contain all your configurations and fan curve values. deleting that file will reset all your fan curves.
+6. ```conf.txt``` will be created in the same folder, it will contain all your configurations and fan curve values. Deleting that file will reset all your fan curves.
 
 # Models Supported.
 - MSI GS66 (10th Gen Intel)
