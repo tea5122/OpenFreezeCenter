@@ -9,7 +9,7 @@
 4. ``` sudo ./at_startup.sh ```
 5. ```conf.txt``` will be created in the same folder. it will contain all your configurations and fan curve values. deleting that file will reset all your fan curves.
 
-# Working on models
+# Models Supported.
 - MSI GS66 (10th Gen Intel)
 - MSI GE66
 - MSI GS65
