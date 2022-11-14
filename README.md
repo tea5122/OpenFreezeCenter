@@ -15,3 +15,6 @@
 - MSI GE66
 - MSI GS65
 - MSI GF63
+
+# Bugs & Features.
+- I will try to fix or add things when I have time but feel free to file Issues.
