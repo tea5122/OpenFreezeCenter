@@ -34,7 +34,8 @@ if check_1 == False:
         conf_file.write("%i," % val)
     conf_file.write("\n0")
     conf_file.close()
-    os.system("xterm -e 'bash -c \"sudo nohup python3 ${pkgdir}read_temp_set.py\"'")
+    os.system("xterm -e 'bash -c \"sudo nohup python3 ${pkgdir}read_temp_set.py >/dev/null 2>&1\"'")
+    
     
 import gi.repository
 
@@ -61,7 +62,7 @@ def corrections(lines):
     conf_file = open(my_filename, "w")
     conf_file.writelines(str_1)
     conf_file.close()
-    os.system("xterm -e 'bash -c \"sudo python3 ${pkgdir}write_EC.py\"'")
+    os.system("xterm -e 'bash -c \"sudo python3 ${pkgdir}write_EC.py >/dev/null 2>&1\"'")
     return
     
 all_lines = reading()
@@ -85,11 +86,11 @@ def build_menu():
     Separator = gtk.SeparatorMenuItem()                                     ################################## Fan Mode
     menu.append(Separator)
 
-    item_auto = gtk.MenuItem.new_with_label('Auto')                         ################# Auto
+    item_auto = gtk.MenuItem.new_with_label('Auto Fan Speed')                         ################# Auto
     item_auto.connect('activate', auto)
     menu.append(item_auto)
 
-    item_basic = gtk.MenuItem.new_with_label('Basic')                       ################# Basic
+    item_basic = gtk.MenuItem.new_with_label('Fan Modes')                       ################# Basic
     item_basic.set_submenu(basic_submenu)
     
     basic_slowest = gtk.MenuItem.new_with_label('Slowest')
@@ -122,7 +123,7 @@ def build_menu():
 
     menu.append(item_basic)
 
-    item_advanced = gtk.MenuItem.new_with_label('Advanced')                  ################# Advanced
+    item_advanced = gtk.MenuItem.new_with_label('Custom Fan Curves')                  ################# Advanced
     item_advanced.connect('activate', advanced)
     menu.append(item_advanced)
 
@@ -133,7 +134,7 @@ def build_menu():
     Separator = gtk.SeparatorMenuItem()                                      ################################# Monitering & Battery Charging Threshold
     menu.append(Separator)
 
-    item_monitor = gtk.MenuItem.new_with_label('Monitoring')                 ################# Monitering
+    item_monitor = gtk.MenuItem.new_with_label('Component Monitor')                 ################# Monitering
     item_monitor.connect('activate', monitoring)
     menu.append(item_monitor)
     
@@ -233,7 +234,7 @@ def cooler_booster(source):
     corrections(lines)
 
 def monitoring(source):
-    os.system("xterm -e 'bash -c \"sudo nohup python3 ${pkgdir}monitor.py\"'")
+    os.system("xterm -e 'bash -c \"sudo nohup python3 ${pkgdir}monitor.py >/dev/null 2>&1\"'")
         
 def battery_charge_threashold_50(source):
     all_lines = reading()
@@ -266,7 +267,7 @@ def battery_charge_threashold_100(source):
     corrections(lines)
     
 def ec_map(source):
-    os.system("xterm -e 'bash -c \"sudo nohup python3 ${pkgdir}ec_dump.py\"'")
+    os.system("xterm -e 'bash -c \"sudo nohup python3 ${pkgdir}ec_dump.py >/dev/null 2>&1\"'")
     
 def quit(source):
     gtk.main_quit()
